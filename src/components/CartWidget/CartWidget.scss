@@ -1,0 +1,12 @@
+.navbar__cart {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 8px;
+    color: white;
+
+    span {
+        font-size: 20px;
+    }
+}
