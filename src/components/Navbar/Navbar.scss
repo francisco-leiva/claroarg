@@ -7,10 +7,15 @@
 }
 
 .navbar__links {
+    width: 50%;
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-left: 40px;
+}
+
+.navbar__logo {
+    margin: 0 0 7px 10px;
+    width: 85px;
 }
 
 .navbar__menus {
@@ -22,4 +27,9 @@
     text-decoration: none;
     color: white;
     padding: 24px 10px;
+
+    &:hover {
+        background-color: #da262c;
+        color: white;
+    }
 }

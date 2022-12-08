@@ -1,26 +1,29 @@
 import IconoComercio from '../Icons/IconoComercio';
 import CartWidget from '../CartWidget/CartWidget';
+import { Link } from 'react-router-dom';
+import { Menus } from '../../mock';
+
 
 const Navbar = () => {
-    const Menus = ['Inicio', 'Celulares', 'Accesorios', 'Ayuda'];
 
     return (
         <nav className='navbar'>
             <div className="navbar__links">
-                <a href='#'>
-                    <div className='navbar__logo'>
+                <div className='navbar__logo'>
+                    <Link to={'/'}>
                         <IconoComercio />
-                    </div>
-                </a>
+                    </Link>
+                </div>
                 <div className='navbar__menus'>
                     {
-                        Menus.map((menu) => {
-                            return <a href='#' className='navbar__menu'>{menu}</a>
+                        Menus.map((menu, index) => {
+                            const key = `links-${menu}-${index}`;
+                            return <Link to={menu.href} className='navbar__menu' key={key}>{menu.name}</Link>
                         })
                     }
                 </div>
             </div>
-            
+
             <CartWidget />
         </nav>
     )

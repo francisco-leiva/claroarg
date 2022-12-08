@@ -1,0 +1,33 @@
+.item__link {
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+        color: black;
+    }
+}
+
+.item__card {
+    width: fit-content;
+    background-color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px 1px rgb(0 0 0 / 20%);
+}
+
+.item__img {
+    height: 229px;
+    object-fit: contain;
+}
+
+.item__title {
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+.item__text {
+    padding-top: 10px;
+    font-size: 22px;
+    font-weight: 600;
+}

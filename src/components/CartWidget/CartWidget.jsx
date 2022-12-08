@@ -1,4 +1,3 @@
-import React from 'react';
 import Cart from '../Icons/Cart';
 
 const CartWidget = () => {
