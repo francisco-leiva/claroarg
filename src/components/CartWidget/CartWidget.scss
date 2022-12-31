@@ -1,12 +1,18 @@
+.navbar__cart__link {
+    text-decoration: none;
+}
+
 .navbar__cart {
-    width: 45%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin: 0 8px;
+    margin: 0 16px;
     color: white;
 
     span {
-        font-size: 20px;
+        span {
+            top: 5%;
+            background-color: #D8AD00;
+        }
     }
 }

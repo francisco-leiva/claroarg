@@ -1,0 +1,42 @@
+.cart__item {
+    display: grid;
+    grid-template-columns: 20% 40% 20% 20%;
+    grid-template-areas: "img title price delete";
+    align-items: center;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.cart__item__img {
+    grid-area: img;
+    margin: 0 24px;
+
+    img {
+        width: 150px;
+    }
+}
+
+.cart__item__title {
+    grid-area: title;
+
+    p {
+        font-size: 20px;
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+}
+
+.cart__item__price {
+    grid-area: price;
+    font-size: 26px;
+    text-align: center;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.cart__item__delete {
+    grid-area: delete;
+    text-align: center;
+}

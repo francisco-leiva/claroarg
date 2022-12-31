@@ -1,40 +1,59 @@
-import { Products } from '../../mock';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { CartContext } from '../../context/CartContext';
 
 const ItemDetail = () => {
-    const [producto, setProducto] = useState([]);
-    const { id } = useParams();
+    const [prod, setProd] = useState([]);
+    const [quantity, setQuantity] = useState(1);
+    const { itemId } = useParams();
+    const { addToCart, totalQuantityCart, totalPrice } = useContext(CartContext);
 
-    const FilterProducto = new Promise((resolved, rejected) => {
-        setTimeout(() => {
-            const newProducto = Products.filter((p) => p.id == id);
-
-            resolved(newProducto);
-        }, 2000)
-    })
 
     useEffect(() => {
-        FilterProducto.then((response) => {
-            setProducto(response)
+        const db = getFirestore();
+        const getProd = doc(db, 'itemsCollection', itemId);
+
+        getDoc(getProd).then(snapshot => {
+            if (snapshot.exists()) {
+                setProd([{ id: snapshot.id, ...snapshot.data() }]);
+            }
         })
-    }, [id]);
+
+    }, [itemId]);
+
+    const handleAddToCart = (product) => {
+        addToCart({
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            img: product.img,
+            quantity: quantity,
+            totalPrice: (product.price * quantity)
+        })
+        totalQuantityCart();
+        totalPrice();
+    }
 
     return (
-        producto && producto.map(prod => {
+        prod && prod.map(product => {
             return (
-                <div className='itemDetail'>
+                <div className='itemDetail' key={product.id}>
                     <div className='itemDetail__img'>
-                        <img src={prod.imgDetail} alt={prod.title} />
+                        <img src={product.imgDetail} alt={product.title} />
                     </div>
                     <div className='itemDetail__info'>
-                        <h3 className='itemDetail__info__title'>{prod.title}</h3>
-                        <h4 className='itemDetail__info__price'>${prod.price}</h4>
+                        <div className='itemDetail__info__description'>
+                            <h3 className='itemDetail__info__title'>{product.title}</h3>
+                            <h4 className='itemDetail__info__price'>${product.pagePrice}</h4>
+                        </div>
 
-                        <button className='itemDetail__info__button'>Comprar</button>
+                        <div className='itemDetail__info__shop'>
+                            <input type='number' className='itemDetail__info__quantity' defaultValue={1} min={1} max={product.stock} onChange={(e) => setQuantity(parseInt(e.target.value))} />
+                            <button className='itemDetail__info__addToCart' onClick={() => handleAddToCart(product)}>Agregar al carrito</button>
+                        </div>
                     </div>
                 </div>
-
             )
         })
     )

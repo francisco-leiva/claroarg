@@ -1,0 +1,25 @@
+.emptyCart {
+    height: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.emptyCart__title {
+    margin-bottom: 32px;
+}
+
+.emptyCart__link {
+    text-decoration: none;
+    margin: 0 15px;
+
+    button {
+        background-color: #ef3829;
+
+        &:hover {
+            background-color: #C22020;
+        }
+    }
+}

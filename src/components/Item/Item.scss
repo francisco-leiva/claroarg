@@ -15,18 +15,25 @@
     box-shadow: 0 3px 6px 1px rgb(0 0 0 / 20%);
 }
 
-.item__img {
+.item__card__img {
     height: 229px;
     object-fit: contain;
 }
 
-.item__title {
+.item__card__body {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.item__card__title {
     font-size: 20px;
     font-weight: 600;
     padding-top: 10px;
 }
 
-.item__text {
+.item__card__price {
     padding-top: 10px;
     font-size: 22px;
     font-weight: 600;

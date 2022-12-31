@@ -1,0 +1,33 @@
+.help__container {
+    max-width: 1140px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.help__container__card__title {
+    margin: 30px 0;
+}
+
+.help__container__card__questions {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.help__container__card__boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.help__container__card__box {
+    width: 90%;
+    margin: 10px auto;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 20%);
+    text-align: center;
+
+    p {
+        margin: 15px;
+    }
+}
