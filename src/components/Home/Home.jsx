@@ -11,13 +11,16 @@ const Home = () => {
     useEffect(() => {
         const db = getFirestore();
 
+        // getting cellphones and accessories from db
         const cellphonesCollection = query(collection(db, 'itemsCollection'), where('type', '==', 'cellphones'), limit(3));
         const accessoriesCollection = query(collection(db, 'itemsCollection'), where('type', '==', 'accessories'), limit(3));
 
+        // setting cellphones
         getDocs(cellphonesCollection).then(snapshot => {
             setCellphones(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         })
 
+        // setting accessories
         getDocs(accessoriesCollection).then(snapshot => {
             setAccessories(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         })  

@@ -11,15 +11,18 @@ const Accessories = () => {
     useEffect(() => {
         const db = getFirestore();
 
+        // getting accessories and categories from db
         const accessoriesCollection = query(collection(db, 'itemsCollection'), where('type', '==', 'accessories'));
         const accessoriesCategoriesCollection = collection(db, 'accessoriesCategories');
 
         if (!categoryId) {
+            // setting all the accessories
             getDocs(accessoriesCollection).then(snapshot => {
                 setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
             })
 
         } else {
+            // setting accessories by category
             const filter = query(accessoriesCollection, where('category', '==', categoryId));
 
             getDocs(filter).then(snapshot => {
@@ -27,6 +30,7 @@ const Accessories = () => {
             })
         }
 
+        // setting categories
         getDocs(accessoriesCategoriesCollection).then(snapshot => {
             setCategories(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         })
