@@ -7,7 +7,7 @@ const ItemListContainer = ({ productsList, categories }) => {
       <img src='https://images.ctfassets.net/weuwbjv1v9lc/2K87mIHbP6vUHj1AzwTfAz/1bfcaf7a53b8c23118b09561d1f7b8d3/protege-tu-celu-tienda-claro-45-desktop.webp' alt='Protege tu celular' className='d-block w-100' />
 
       <div className='itemListContainer'>
-        <div className='itemListContainer__filtros'>
+        <div className='itemListContainer__categories'>
           <h4 className='itemListContainer__title'>Categorías</h4>
           <ul>
             {
