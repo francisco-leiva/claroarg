@@ -52,7 +52,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className='navbar__menus hidden'>
+          <div className='navbar__menus'>
             {menus.map((menu, index) => {
               const key = `links-${menu}-${index}`;
               return (

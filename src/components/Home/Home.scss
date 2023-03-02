@@ -1,38 +1,56 @@
-.home__sections {
-    max-width: 1140px;
-    margin: 40px auto;
-    padding: 0 16px;
-}
-
-.home__title {
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    h5 {
-        font-size: 24px;
-        margin: 0;
+.home {
+    &__sections {
+        max-width: 1140px;
+        margin: 40px auto;
+        padding: 0 16px;
     }
 
-    a {
-        font-size: 18px;
-        text-decoration: none;
-        color: black;
+    &__title {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        &:hover {
+        h5 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        a {
+            font-size: 18px;
+            text-decoration: none;
             color: black;
-            text-decoration: underline;
+
+            &:hover {
+                color: black;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__products {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        .item__link {
+            margin: 10px 0;
         }
     }
 }
 
-.home__products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+@media screen and (max-width: 845px) {
+    .carouselItem {
+        &__1 {
+            content: url(https://images.ctfassets.net/weuwbjv1v9lc/6Y8Gs9kv0STCRuqfb7eByB/751c0fc76c8337a93941f7142a5ed841/descuento-celulares-accesorios-40-tienda-claro-mobile.webp);
+        }
 
-    .item__link {
-        margin: 10px 0;
+        &__2 {
+            content: url(https://images.ctfassets.net/weuwbjv1v9lc/5bugJ9tmaTbtjwBCbJOYOB/226a485b8d78d742bcfb0be49d963e9f/moto-edge-30-ultra-neo-12-cuotas-tienda-claro-mobile.webp);
+        }
+
+        &__3 {
+            content: url(https://images.ctfassets.net/weuwbjv1v9lc/3UiWrzUkcMpUidY5zXgDF6/ead9af183225169d0c95d678c3abdfc4/galaxy-s23-series-lanzamiento-tienda-claro-mobile.webp);
+        }
     }
 }
