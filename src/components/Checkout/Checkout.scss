@@ -1,46 +1,51 @@
 .checkout__container {
     max-width: 1210px;
     margin: 32px auto;
-    padding: 0 16px;
+    padding: 16px;
     border-radius: 6px;
     box-shadow: 0 3px 6px 1px rgb(0 0 0 / 20%);
 }
 
-.checkout__container__form {
-    margin: 20px auto;
-    padding-top: 10px;
-}
+.checkout__form {
+    &__sections {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
 
-.checkout__container__form__sections {
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
+        label:first-child {
+            font-size: 20px;
+        }
 
-    label {
-        margin-bottom: 5px;
-    }
-
-    input {
-        max-width: 350px;
-        padding-left: 8px;
-        border-radius: 5px;
+        &--textField {
+            width: 45ch;
+            margin: 8px !important;
+        }
     }
 }
 
-.checkout__container__detail__prod {
+.checkout__detail__prod {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 40px;
+    margin: 16px 40px;
+
+    &--title {
+        p {
+            margin: 0;
+        }
+    }
+
+    &--price {
+        p {
+            margin: 0;
+            font-size: 20px;
+        }
+    }
 }
 
-.checkout__container__detail__prod__price {
-    text-align: center;
-}
-
-.checkout__container__detail__totalPrice {
+.checkout__detail__totalPrice {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     margin-right: 40px;
 
@@ -56,9 +61,45 @@
     }
 }
 
-.checkout__container__btn {
+.checkout__btn {
     display: flex;
-    justify-content: end;
-    margin: 16px 35px;
-    padding-bottom: 16px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 40px;
+    padding-bottom: 10px;
+
+    a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: white;
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .checkout__form__sections {
+        margin: 10px 0;
+
+        &--textField {
+            width: 100%;
+            margin: 8px 0 !important;
+        }
+    }
+
+    .checkout__detail__prod {
+        margin: 16px 10px 16px 0;
+        align-items: flex-end;
+    }
+
+    .checkout__detail__totalPrice {
+        margin-right: 10px;
+        padding: 10px 0;
+    }
+
+    .checkout__btn {
+        margin-right: 10px;
+    }
 }

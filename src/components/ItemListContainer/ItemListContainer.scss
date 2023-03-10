@@ -21,6 +21,7 @@
     font-size: 22px;
     font-weight: 700;
     padding: 16px;
+    margin-bottom: 0;
 }
 
 .itemListContainer__category {
@@ -36,8 +37,39 @@
 }
 
 .itemListContainer__catalogo {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px 16px;
     height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 16px 0;
+}
+
+@media screen and (max-width: 900px) {
+    .itemListContainer {
+        grid-template-columns: 100%;
+        gap: 16px 0;
+    }
+}
+
+@media screen and (max-width: 845px) {
+    .principalImage {
+        content: url(https://images.ctfassets.net/weuwbjv1v9lc/36cNY9jIIsAAswkD3BbLBG/ee43dd54588122037745533119cf5f29/protege-tu-celu-tienda-claro-mobile.webp);
+    }
+}
+
+@media screen and (min-width: 525px) and (max-width: 900px) {
+    .itemListContainer__categories {
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+            margin-right: 2em;
+            display: flex;
+            gap: 2em;
+            align-items: center;
+        }
+    }
 }

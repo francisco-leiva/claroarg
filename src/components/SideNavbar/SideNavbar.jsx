@@ -39,10 +39,10 @@ const SideNavbar = () => {
 
           <ul>
             {menus.map((menu, index) => {
-              const key = `links-${menu}-${index}`;
+              const key = `links-SideNavbar-${menu}-${index}`;
               return (
-                <li>
-                  <Link to={menu.href} className='sideNavbar__menu' key={key}>
+                <li key={key}>
+                  <Link to={menu.href} className='sideNavbar__menu'>
                     {menu.name}
                   </Link>
                 </li>

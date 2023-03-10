@@ -54,3 +54,11 @@
         }
     }
 }
+
+@media screen and (max-width: 375px) {
+    .home__title div {
+        &:first-child {
+            width: min-content;
+        }
+    }
+}
