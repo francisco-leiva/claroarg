@@ -1,73 +1,63 @@
-import HamburgerMenu from '../Icons/HamburgerMenu';
-import SideNavbar from '../SideNavbar/SideNavbar';
-import Logo from '../Icons/Logo';
-import CartWidget from '../CartWidget/CartWidget';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Backdrop from '@mui/material/Backdrop';
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import Backdrop from '@mui/material/Backdrop'
+import './Navbar.scss'
+import { Logo, HamburgerMenu } from '../Icons/Icons'
+import SideNavbar from '../SideNavbar/SideNavbar'
+import CartWidget from '../CartWidget/CartWidget'
 
-const Navbar = () => {
-  // menus for navbar
+export default function Navbar() {
+  // navbar menus
   const menus = [
     { name: 'Inicio', href: '/' },
     { name: 'Celulares', href: '/cellphones' },
     { name: 'Accesorios', href: '/accessories' },
     { name: 'Ayuda', href: '/help' },
-  ];
+  ]
 
   // toggle side navbar
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(false)
 
-  const handleToggle = () => {
-    setIsActive(!isActive);
-  };
-
-  const handleClose = () => {
-    setIsActive(false);
-  };
+  const handleToggleActive = () => setIsActive(!isActive)
 
   return (
-    <>
-      <nav className='navbar'>
-        <div className='navbar__links'>
-          <div className='navbar__hamburgerMenu' onClick={handleToggle}>
-            <HamburgerMenu />
-          </div>
-
-          <Backdrop
-            sx={{
-              color: '#fff',
-              zIndex: (theme) => theme.zIndex.drawer + 1,
-              justifyContent: 'flex-start',
-            }}
-            open={isActive}
-            onClick={handleClose}
-          >
-            <SideNavbar />
-          </Backdrop>
-
-          <div className='navbar__logo'>
-            <Link to={'/'}>
-              <Logo />
-            </Link>
-          </div>
-
-          <div className='navbar__menus'>
-            {menus.map((menu, index) => {
-              const key = `links-${menu}-${index}`;
-              return (
-                <Link to={menu.href} className='navbar__menu' key={key}>
-                  {menu.name}
-                </Link>
-              );
-            })}
-          </div>
+    <header className='navbar'>
+      <nav className='navbar__links'>
+        <div className='navbar__hamburgerMenu' onClick={handleToggleActive}>
+          <HamburgerMenu />
         </div>
 
-        <CartWidget />
-      </nav>
-    </>
-  );
-};
+        <Backdrop
+          sx={{
+            color: '#fff',
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            justifyContent: 'flex-start',
+          }}
+          open={isActive}
+          onClick={handleToggleActive}
+        >
+          <SideNavbar />
+        </Backdrop>
 
-export default Navbar;
+        <div className='navbar__logo'>
+          <Link to={'/'}>
+            <Logo />
+          </Link>
+        </div>
+
+        <div className='navbar__menus'>
+          {menus.map((menu, index) => {
+            const key = `links-${menu}-${index}`
+            return (
+              <Link to={menu.href} className='navbar__menu' key={key}>
+                {menu.name}
+              </Link>
+            )
+          })}
+        </div>
+      </nav>
+
+      <CartWidget />
+    </header>
+  )
+}

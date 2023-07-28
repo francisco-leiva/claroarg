@@ -1,19 +1,20 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
-import { CartContext } from '../../context/CartContext';
-import Cart from '../Cart/Cart';
-import EmptyCart from '../EmptyCart/EmptyCart';
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
+import './CartContainer.scss'
+import { CartContext } from '../../context/CartContext'
+import Cart from '../Cart/Cart'
+import EmptyCart from '../EmptyCart/EmptyCart'
 
-const CartContainer = () => {
+export default function CartContainer() {
   const { cartList, totalPriceCart, clearCart, totalQuantityCart, totalPrice } =
-    useContext(CartContext);
+    useContext(CartContext)
 
   const handleClearCart = () => {
-    clearCart();
-    totalQuantityCart();
-    totalPrice();
-  };
+    clearCart()
+    totalQuantityCart()
+    totalPrice()
+  }
 
   return (
     <div className='cart__container'>
@@ -40,7 +41,5 @@ const CartContainer = () => {
         </>
       )}
     </div>
-  );
-};
-
-export default CartContainer;
+  )
+}

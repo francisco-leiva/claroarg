@@ -1,6 +1,6 @@
-import React from 'react';
+import './Help.scss'
 
-const Help = () => {
+export default function Help() {
   return (
     <div className='help__container'>
       <div>
@@ -49,7 +49,5 @@ const Help = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default Help;
+  )
+}

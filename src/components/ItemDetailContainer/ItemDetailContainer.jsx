@@ -1,11 +1,10 @@
-import ItemDetail from "../ItemDetail/ItemDetail";
+import './ItemDetailContainer.scss'
+import ItemDetail from '../ItemDetail/ItemDetail'
 
-const ItemDetailContainer = () => {
-    return(
-        <div className="itemDetailContainer">
-            <ItemDetail />
-        </div>
-    )
-};
-
-export default ItemDetailContainer;
+export default function ItemDetailContainer() {
+  return (
+    <div className='itemDetailContainer'>
+      <ItemDetail />
+    </div>
+  )
+}

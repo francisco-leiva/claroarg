@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
-import ItemList from '../ItemList/ItemList';
+import { Link } from 'react-router-dom'
+import './ItemListContainer.scss'
+import ItemList from '../ItemList/ItemList'
 
 const ItemListContainer = ({ productsList, categories }) => {
   return (
@@ -7,7 +8,7 @@ const ItemListContainer = ({ productsList, categories }) => {
       <picture>
         <source
           media='(max-width: 845px)'
-          srcset='https://images.ctfassets.net/weuwbjv1v9lc/36cNY9jIIsAAswkD3BbLBG/ee43dd54588122037745533119cf5f29/protege-tu-celu-tienda-claro-mobile.webp'
+          srcSet='https://images.ctfassets.net/weuwbjv1v9lc/36cNY9jIIsAAswkD3BbLBG/ee43dd54588122037745533119cf5f29/protege-tu-celu-tienda-claro-mobile.webp'
         />
         <img
           className='d-block w-100'
@@ -21,7 +22,7 @@ const ItemListContainer = ({ productsList, categories }) => {
           <h4 className='itemListContainer__title'>Categorías</h4>
           <ul>
             {categories.map((category) => {
-              const key = `category-${category.name}-${category.id}`;
+              const key = `category-${category.name}-${category.id}`
               return (
                 <li key={key}>
                   <Link
@@ -31,7 +32,7 @@ const ItemListContainer = ({ productsList, categories }) => {
                     {category.name}
                   </Link>
                 </li>
-              );
+              )
             })}
           </ul>
         </div>
@@ -41,7 +42,7 @@ const ItemListContainer = ({ productsList, categories }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ItemListContainer;
+export default ItemListContainer

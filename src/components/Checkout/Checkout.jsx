@@ -1,24 +1,25 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   addDoc,
   collection,
   getFirestore,
   serverTimestamp,
-} from 'firebase/firestore';
-import Button from 'react-bootstrap/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
-import 'sweetalert2/src/sweetalert2.scss';
-import { CartContext } from '../../context/CartContext';
+} from 'firebase/firestore'
+import Button from 'react-bootstrap/Button'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import 'sweetalert2/src/sweetalert2.scss'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import './Checkout.scss'
+import { CartContext } from '../../context/CartContext'
 
-const Checkout = () => {
+export default function Checkout() {
   const { cartList, totalPriceCart, clearCart, totalQuantityCart, totalPrice } =
-    useContext(CartContext);
-  const [name, setName] = useState();
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState();
+    useContext(CartContext)
+  const [name, setName] = useState()
+  const [phone, setPhone] = useState()
+  const [email, setEmail] = useState()
 
   const order = {
     buyer: {
@@ -29,23 +30,23 @@ const Checkout = () => {
     items: cartList,
     total: totalPriceCart,
     date: serverTimestamp(),
-  };
+  }
 
   const sendOrder = () => {
-    const db = getFirestore();
-    const ordersCollection = collection(db, 'orders');
+    const db = getFirestore()
+    const ordersCollection = collection(db, 'orders')
 
-    addDoc(ordersCollection, order).then(({ id }) => console.log(id));
-  };
+    addDoc(ordersCollection, order).then(({ id }) => console.log(id))
+  }
 
   const handleFinishBuying = () => {
-    sendOrder();
-    clearCart();
-    totalQuantityCart();
-    totalPrice();
+    sendOrder()
+    clearCart()
+    totalQuantityCart()
+    totalPrice()
 
-    Swal.fire('Compra realizada con éxito', 'Que lo disfrutes!', 'success');
-  };
+    Swal.fire('Compra realizada con éxito', 'Que lo disfrutes!', 'success')
+  }
 
   return (
     <div className='checkout__container'>
@@ -114,7 +115,7 @@ const Checkout = () => {
                 <p>${prod.totalPrice}</p>
               </div>
             </div>
-          );
+          )
         })}
 
         <div className='checkout__detail__totalPrice'>
@@ -129,7 +130,5 @@ const Checkout = () => {
         </Button>
       </div>
     </div>
-  );
-};
-
-export default Checkout;
+  )
+}

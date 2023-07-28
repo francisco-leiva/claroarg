@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button'
+import './EmptyCart.scss'
 
-const EmptyCart = () => {
+export default function EmptyCart() {
   return (
     <div className='emptyCart'>
       <h2 className='emptyCart__title'>El carrito está vacío</h2>
@@ -20,7 +21,5 @@ const EmptyCart = () => {
         </Button>
       </div>
     </div>
-  );
-};
-
-export default EmptyCart;
+  )
+}

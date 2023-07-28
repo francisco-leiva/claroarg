@@ -1,49 +1,23 @@
-import Carousel from 'react-bootstrap/Carousel';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import {
-  collection,
-  getDocs,
-  getFirestore,
-  limit,
-  query,
-  where,
-} from 'firebase/firestore';
-import Item from '../Item/Item';
+import Carousel from 'react-bootstrap/Carousel'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import './Home.scss'
+import Item from '../Item/Item'
+import { getProducts } from '../../functions/firebase'
 
-const Home = () => {
-  const [cellphones, setCellphones] = useState([]);
-  const [accessories, setAccessories] = useState([]);
+export default function Home() {
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
-    const db = getFirestore();
+    getProducts().then((data) => setProducts(data))
+  }, [])
 
-    // getting cellphones and accessories from db
-    const cellphonesCollection = query(
-      collection(db, 'itemsCollection'),
-      where('type', '==', 'cellphones'),
-      limit(3)
-    );
-    const accessoriesCollection = query(
-      collection(db, 'itemsCollection'),
-      where('type', '==', 'accessories'),
-      limit(3)
-    );
-
-    // setting cellphones
-    getDocs(cellphonesCollection).then((snapshot) => {
-      setCellphones(
-        snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-      );
-    });
-
-    // setting accessories
-    getDocs(accessoriesCollection).then((snapshot) => {
-      setAccessories(
-        snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
-      );
-    });
-  }, []);
+  const filterPhones = products
+    .filter((prod) => prod.type === 'cellphones')
+    .slice(0, 3)
+  const filterAccessories = products
+    .filter((prod) => prod.type === 'accessories')
+    .slice(0, 3)
 
   return (
     <>
@@ -100,8 +74,8 @@ const Home = () => {
         </div>
 
         <div className='home__products'>
-          {cellphones.map((prod) => {
-            return <Item item={prod} key={prod.id} />;
+          {filterPhones.map((prod) => {
+            return <Item item={prod} key={prod.id} />
           })}
         </div>
       </div>
@@ -117,13 +91,11 @@ const Home = () => {
         </div>
 
         <div className='home__products'>
-          {accessories.map((prod) => {
-            return <Item item={prod} key={prod.id} />;
+          {filterAccessories.map((prod) => {
+            return <Item item={prod} key={prod.id} />
           })}
         </div>
       </div>
     </>
-  );
-};
-
-export default Home;
+  )
+}

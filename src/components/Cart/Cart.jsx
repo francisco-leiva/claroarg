@@ -1,16 +1,17 @@
-import { useContext } from 'react';
-import Button from '@mui/material/Button';
-import { CartContext } from '../../context/CartContext';
+import { useContext } from 'react'
+import Button from '@mui/material/Button'
+import './Cart.scss'
+import { CartContext } from '../../context/CartContext'
 
-const Cart = () => {
+export default function Cart() {
   const { cartList, deleteItem, totalQuantityCart, totalPrice } =
-    useContext(CartContext);
+    useContext(CartContext)
 
   const handleDeleteItem = (itemId) => {
-    deleteItem(itemId);
-    totalQuantityCart();
-    totalPrice();
-  };
+    deleteItem(itemId)
+    totalQuantityCart()
+    totalPrice()
+  }
 
   return cartList.map((prod) => {
     return (
@@ -42,8 +43,6 @@ const Cart = () => {
           </div>
         </div>
       </div>
-    );
-  });
-};
-
-export default Cart;
+    )
+  })
+}
