@@ -4,14 +4,7 @@ import './Cart.scss'
 import { CartContext } from '../../context/CartContext'
 
 export default function Cart() {
-  const { cartList, deleteItem, totalQuantityCart, totalPrice } =
-    useContext(CartContext)
-
-  const handleDeleteItem = (itemId) => {
-    deleteItem(itemId)
-    totalQuantityCart()
-    totalPrice()
-  }
+  const { cartList, deleteItem } = useContext(CartContext)
 
   return cartList.map((prod) => {
     return (
@@ -36,7 +29,7 @@ export default function Cart() {
             <Button
               variant='outlined'
               color='error'
-              onClick={() => handleDeleteItem(prod.id)}
+              onClick={() => deleteItem(prod.id)}
             >
               Eliminar
             </Button>

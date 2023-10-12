@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react'
 import { CartReducer } from './CartReducer'
+import { TYPES } from './actionTypes'
 
 export const CartContext = createContext([])
 
@@ -14,33 +15,39 @@ export function CartContextProvider({ children }) {
 
   const addToCart = (item) => {
     dispatch({
-      type: 'ADD_TO_CART',
+      type: TYPES.ADD_TO_CART,
       payload: item,
     })
+    totalQuantityCart()
+    totalPrice()
   }
 
   const clearCart = () => {
     dispatch({
-      type: 'CLEAR_CART',
+      type: TYPES.CLEAR_CART,
     })
+    totalQuantityCart()
+    totalPrice()
   }
 
   const deleteItem = (itemId) => {
     dispatch({
-      type: 'DELETE_ITEM',
+      type: TYPES.DELETE_ITEM,
       payload: itemId,
     })
+    totalQuantityCart()
+    totalPrice()
   }
 
   const totalQuantityCart = () => {
     dispatch({
-      type: 'TOTAL_QUANTITY_CART',
+      type: TYPES.TOTAL_QUANTITY_CART,
     })
   }
 
   const totalPrice = () => {
     dispatch({
-      type: 'TOTAL_PRICE_CART',
+      type: TYPES.TOTAL_PRICE_CART,
     })
   }
 
@@ -53,8 +60,6 @@ export function CartContextProvider({ children }) {
         addToCart,
         clearCart,
         deleteItem,
-        totalQuantityCart,
-        totalPrice,
       }}
     >
       {children}

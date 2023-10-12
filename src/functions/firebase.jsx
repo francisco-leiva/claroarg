@@ -4,6 +4,7 @@ import {
   getDocs,
   doc,
   getDoc,
+  addDoc,
 } from 'firebase/firestore'
 
 export async function getProducts() {
@@ -34,4 +35,11 @@ export async function getProduct(prodId) {
   if (data.exists()) {
     return { id: data.id, ...data.data() }
   }
+}
+
+export function sendOrder(order) {
+  const db = getFirestore()
+  const ordersCollection = collection(db, 'orders')
+
+  addDoc(ordersCollection, order).then(({ id }) => console.log(id))
 }

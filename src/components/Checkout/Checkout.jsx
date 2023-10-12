@@ -1,22 +1,17 @@
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  addDoc,
-  collection,
-  getFirestore,
-  serverTimestamp,
-} from 'firebase/firestore'
+import { serverTimestamp } from 'firebase/firestore'
 import Button from 'react-bootstrap/Button'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import 'sweetalert2/src/sweetalert2.scss'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import './Checkout.scss'
+import { sendOrder } from '../../functions/firebase'
 import { CartContext } from '../../context/CartContext'
 
 export default function Checkout() {
-  const { cartList, totalPriceCart, clearCart, totalQuantityCart, totalPrice } =
-    useContext(CartContext)
+  const { cartList, totalPriceCart, clearCart } = useContext(CartContext)
   const [name, setName] = useState()
   const [phone, setPhone] = useState()
   const [email, setEmail] = useState()
@@ -32,18 +27,9 @@ export default function Checkout() {
     date: serverTimestamp(),
   }
 
-  const sendOrder = () => {
-    const db = getFirestore()
-    const ordersCollection = collection(db, 'orders')
-
-    addDoc(ordersCollection, order).then(({ id }) => console.log(id))
-  }
-
   const handleFinishBuying = () => {
-    sendOrder()
+    sendOrder(order)
     clearCart()
-    totalQuantityCart()
-    totalPrice()
 
     Swal.fire('Compra realizada con éxito', 'Que lo disfrutes!', 'success')
   }

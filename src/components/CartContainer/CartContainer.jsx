@@ -7,14 +7,7 @@ import Cart from '../Cart/Cart'
 import EmptyCart from '../EmptyCart/EmptyCart'
 
 export default function CartContainer() {
-  const { cartList, totalPriceCart, clearCart, totalQuantityCart, totalPrice } =
-    useContext(CartContext)
-
-  const handleClearCart = () => {
-    clearCart()
-    totalQuantityCart()
-    totalPrice()
-  }
+  const { cartList, totalPriceCart, clearCart } = useContext(CartContext)
 
   return (
     <div className='cart__container'>
@@ -30,7 +23,7 @@ export default function CartContainer() {
           </div>
 
           <div className='cart__container__buttons'>
-            <Button variant='danger' onClick={() => handleClearCart()}>
+            <Button variant='danger' onClick={clearCart}>
               VACIAR CARRITO
             </Button>
 

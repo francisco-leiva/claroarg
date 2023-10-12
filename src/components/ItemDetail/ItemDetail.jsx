@@ -13,7 +13,7 @@ export default function ItemDetail() {
   const [prod, setProd] = useState([])
   const [quantity, setQuantity] = useState('')
   const { itemId } = useParams()
-  const { addToCart, totalQuantityCart, totalPrice } = useContext(CartContext)
+  const { addToCart } = useContext(CartContext)
 
   useEffect(() => {
     getProduct(itemId).then((data) => setProd(data))
@@ -32,8 +32,6 @@ export default function ItemDetail() {
       quantity: quantity,
       totalPrice: product.price * quantity,
     })
-    totalQuantityCart()
-    totalPrice()
   }
 
   return (
