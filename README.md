@@ -4,7 +4,7 @@ Este proyecto fue inspirado en la pagina oficial de Claro Argentina, la cuál se
 
 ## Links
 
-- Live Site URL: https://claroarg-react.netlify.app/
+- Live Site URL: [Click here](https://claroarg.netlify.app/)
 
 ## Mi proceso
 
